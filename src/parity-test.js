@@ -23,7 +23,7 @@ export default () => {
       rigthAnswer = 'no';
     }
 
-    const answer = readlineSync.question('');
+    const answer = readlineSync.question('Your answer: ');
     if (answer === rigthAnswer) {
       console.log('Correct!');
     } else {
