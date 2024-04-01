@@ -30,6 +30,8 @@ export default () => {
       console.log(`'${answer}' is wrong answer:(. Correct answer was '${rigthAnswer}'.\nLet's try again, ${name}!`);
       break;
     }
+    if (i === 3) {
+      console.log(`Congratulations, ${name}!`);
+    }
   }
-  console.log(`Congratulations, ${name}!`);
 };
