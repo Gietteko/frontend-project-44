@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-export const getRandomNum = () => {
+const getRandomNum = () => {
   const max = 100;
   const min = 0;
   const randomNum = Math.floor(Math.random() * (max - min)) + min;
@@ -28,6 +28,41 @@ export const parityTest = () => {
       console.log('Correct!');
     } else {
       console.log(`'${answer}' is wrong answer:(. Correct answer was '${rigthAnswer}'.\nLet's try again, ${name}!`);
+      break;
+    }
+    if (i === 3) {
+      console.log(`Congratulations, ${name}!`);
+    }
+  }
+};
+const getRandomSymbol = () => {
+  const symbols = ['+', '-', '*'];
+  const randomIndex = Math.floor(Math.random() * symbols.length);
+  return symbols[randomIndex];
+};
+const getRandomExpression = () => {
+  const part1 = getRandomNum();
+  const part2 = getRandomSymbol();
+  const part3 = getRandomNum();
+  const randomExpression = `${part1} ${part2} ${part3}`;
+  return randomExpression;
+};
+export const calc = () => {
+  console.log('Welcome to the Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  console.log('What is the result of the expression?');
+  for (let i = 1; i <= 3; i += 1) {
+    const expression = getRandomExpression();
+    const rigthValue = eval(expression);
+    console.log(`Question: ${expression}`);
+    const valueInAnswer = readlineSync.question('Your answer: ');
+    const valueOfPlayer = parseInt(valueInAnswer, 10);
+
+    if (valueOfPlayer === rigthValue) {
+      console.log('Correct!');
+    } else {
+      console.log(`'${valueOfPlayer}' is wrong answer:(. Correct answer was '${rigthValue}'.\nLet's try again, ${name}!`);
       break;
     }
     if (i === 3) {

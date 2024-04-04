@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import app from '../src/parity-test.js';
+import { parityTest as app } from '../src/index.js';
 
 app();
