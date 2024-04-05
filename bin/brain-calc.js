@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { calc as app } from '../src/index.js';
+import app from '../src/games/brain-calc.js';
 
 app();
