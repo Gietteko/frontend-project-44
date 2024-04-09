@@ -1,31 +1,30 @@
-import readlineSync from 'readline-sync';
-import { isPrime, getRandomNum } from './utils.js';
+import startGame from '../index.js';
+import randomNumber from '../utils.js';
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  for (let i = 1; i <= 3; i += 1) {
-    const randomNum = getRandomNum();
-    const randomNumIsPrime = isPrime(randomNum);
-    console.log(`Question: ${randomNum}`);
-    let rigthAnswer;
+const taskPrime = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-    if (randomNumIsPrime === true) {
-      rigthAnswer = 'yes';
-    } else if (randomNumIsPrime === false) {
-      rigthAnswer = 'no';
-    }
-    const answer = readlineSync.question('Your answer: ');
-    if (answer === rigthAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer:(. Correct answer was '${rigthAnswer}'.\nLet's try again, ${name}!`);
-      break;
-    }
-    if (i === 3) {
-      console.log(`Congratulations, ${name}!`);
+const isPrime = (num) => {
+  if (num < 2) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+    if (num % i === 0) {
+      return false;
     }
   }
+  return true;
 };
+
+const getPrimeRoundData = () => {
+  const questionPrime = randomNumber(1, 100);
+
+  const correctAnswerPrime = isPrime(questionPrime) ? 'yes' : 'no';
+
+  return [questionPrime, correctAnswerPrime];
+};
+
+const startPrimeGame = () => {
+  startGame(getPrimeRoundData, taskPrime);
+};
+
+export default startPrimeGame;

@@ -1,10 +1,10 @@
-import playGame from '../index.js';
-import getRandomNum from './utils.js';
+import startGame from '../index.js';
+import randomNumber from '../utils.js';
 
-const task = 'What is the result of the expression?';
+const taskCalc = 'What is the result of the expression?';
 
-const calculate = (num1, num2, operation) => {
-  switch (operation) {
+const calculatedExpression = (num1, num2, operator) => {
+  switch (operator) {
     case '+':
       return num1 + num2;
     case '-':
@@ -12,20 +12,28 @@ const calculate = (num1, num2, operation) => {
     case '*':
       return num1 * num2;
     default:
-      throw new Error(`Unknown order state: '${operation}'!`);
+      throw new Error(`Unknown operator: '${operator}'!`);
   }
 };
-const playCalc = () => {
-  const first = getRandomNum();
-  const second = getRandomNum();
+
+const getCalcRoundData = () => {
+  const number1 = randomNumber(1, 100);
+  const number2 = randomNumber(1, 100);
+
   const operators = ['+', '-', '*'];
-  const operator = operators[getRandomNum(0, operators.length - 1)];
-  const question = `${first} ${operator} ${second}`;
-  const correctAnswer = calculate(first, second, operator).toString();
-  return [question, correctAnswer];
-};
-const startCalc = () => {
-  playGame(playCalc, task);
+  const randomIndex = randomNumber(0, 2);
+
+  const newOperator = operators[randomIndex];
+
+  const correctAnswerCalc = String(calculatedExpression(number1, number2, newOperator));
+
+  const questionCalc = `${number1} ${newOperator} ${number2}`;
+
+  return [questionCalc, correctAnswerCalc];
 };
 
-export default startCalc;
+const startCalcGame = () => {
+  startGame(getCalcRoundData, taskCalc);
+};
+
+export default startCalcGame;
