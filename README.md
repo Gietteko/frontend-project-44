@@ -20,35 +20,35 @@ Brain games is a project in which the player will need to complete 5 math games
 * _Brain-even. Here the player will see a random number and will have to answer whether it is even or not._
 <div align="center">
   <a href="https://asciinema.org/a/TXWDpoLzxvlPMO2ZXol0PabsP">
-    <img src="src/images/image.png" alt="Logo" width="40" height="40">
+    <img src="src/images/asciinema.png" alt="Logo" width="40" height="40">
     <p>Brain-even</p>
   </a>
 
 * _Brain-calc. Here, the player will be given a random mathematical expression to which they must give the correct answer._
 <div align="center">
   <a href="https://asciinema.org/a/206mofzUPcwKIjFZZJraVb0Yk">
-    <img src="src/images/image.png" alt="Logo" width="40" height="40">
+    <img src="src/images/asciinema.png" alt="Logo" width="40" height="40">
     <p>Brain-calc</p>
   </a>
 
 * _Brain-gcd. Here the player will be shown two random numbers. The player has to find the greatest common divisor of these numbers._
 <div align="center">
   <a href="https://asciinema.org/a/hnZI00C9hGOtHbgoTv6L4BHmE">
-    <img src="src/images/image.png" alt="Logo" width="40" height="40">
+    <img src="src/images/asciinema.png" alt="Logo" width="40" height="40">
     <p>Brain-gcd</p>
   </a>
 
 * _Brain-progression. Here the player will be shown a random arithmetic progression with a randomly omitted number. The player has to find the value of the missing number._
 <div align="center">
   <a href="https://asciinema.org/a/6ZUCZ1M1mbVK2hLgJTOKDuTin">
-    <img src="src/images/image.png" alt="Logo" width="40" height="40">
+    <img src="src/images/asciinema.png" alt="Logo" width="40" height="40">
     <p>Brain-progression</p>
   </a>
 
 * _Brain-prime. Here the player will be shown a random number and must determine whether it is prime or not._
  <div align="center">
   <a href="https://asciinema.org/a/F7POVpe1pa7mAhmjCSGAsY7Iq">
-    <img src="src/images/image.png" alt="Logo" width="40" height="40">
+    <img src="src/images/asciinema.png" alt="Logo" width="40" height="40">
     <p>Brain-prime</p>
   </a>
   </div>
