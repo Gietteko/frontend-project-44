@@ -1,27 +1,31 @@
-import readlineSync from 'readline-sync';
-import { getRandomExpression } from '../index.js';
+import playGame from '../index.js';
+import getRandomNum from './utils.js';
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('What is the result of the expression?');
-  for (let i = 1; i <= 3; i += 1) {
-    const expression = getRandomExpression();
-    /* eslint-disable-next-line */
-    const rigthValue = eval(expression);
-    console.log(`Question: ${expression}`);
-    const valueInAnswer = readlineSync.question('Your answer: ');
-    const valueOfPlayer = parseInt(valueInAnswer, 10);
+const task = 'What is the result of the expression?';
 
-    if (valueOfPlayer === rigthValue) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${valueOfPlayer}' is wrong answer:(. Correct answer was '${rigthValue}'.\nLet's try again, ${name}!`);
-      break;
-    }
-    if (i === 3) {
-      console.log(`Congratulations, ${name}!`);
-    }
+const calculate = (num1, num2, operation) => {
+  switch (operation) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      throw new Error(`Unknown order state: '${operation}'!`);
   }
 };
+const playCalc = () => {
+  const first = getRandomNum();
+  const second = getRandomNum();
+  const operators = ['+', '-', '*'];
+  const operator = operators[getRandomNum(0, operators.length - 1)];
+  const question = `${first} ${operator} ${second}`;
+  const correctAnswer = calculate(first, second, operator).toString();
+  return [question, correctAnswer];
+};
+const startCalc = () => {
+  playGame(playCalc, task);
+};
+
+export default startCalc;

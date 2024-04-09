@@ -1,29 +1,28 @@
-import readlineSync from 'readline-sync';
-import { getRandomProgression, getRandomIndexOfArr, getNewArr } from '../index.js';
+import playGame from '../index.js';
+import getRandomNum from './utils.js';
+
+const task = 'What number is missing in the progression?';
+
+const getProgression = (start = 1, countOfMembers = 5, difference = 2) => {
+  const members = [];
+  for (let i = 0; i <= (countOfMembers - 1); i += 1) {
+    members.push(start + difference * i);
+  }
+  return members;
+};
+
+const playProgression = () => {
+  const start = getRandomNum(0, 10);
+  const difference = getRandomNum(0, 5);
+  const countOfMembers = 7;
+  const hiddenIndex = getRandomNum(0, countOfMembers);
+  const progression = getProgression(start, countOfMembers, difference);
+  const correctAnswer = String(progression[hiddenIndex - 1]);
+  progression[hiddenIndex - 1] = '..';
+  const question = String(progression.join(' '));
+  return [question, correctAnswer];
+};
 
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('What number is missing in the progression?');
-  for (let i = 1; i <= 3; i += 1) {
-    const randomProgression = getRandomProgression();
-    const randomIndexOfProgression = getRandomIndexOfArr(randomProgression);
-    const newProgression = getNewArr(randomProgression, randomIndexOfProgression);
-    const newProgressionStr = newProgression.join(' ');
-    console.log(`Question: ${newProgressionStr}`);
-    const valueInAnswer = readlineSync.question('Your answer: ');
-    const rigthAnswer = randomProgression[randomIndexOfProgression];
-    const valueOfPlayer = parseInt(valueInAnswer, 10);
-
-    if (valueOfPlayer === rigthAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${valueOfPlayer}' is wrong answer:(. Correct answer was '${rigthAnswer}'.\nLet's try again, ${name}!`);
-      break;
-    }
-    if (i === 3) {
-      console.log(`Congratulations, ${name}!`);
-    }
-  }
+  playGame(playProgression, task);
 };
